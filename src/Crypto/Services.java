@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TP2_CryptoLibrary;
+package Crypto;
 
 
 
+import TP2_CryptoLibrary.Provider;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,13 +21,16 @@ public class Services
 {
   
 
-    static Properties propConfig;
-
+    static Properties propertiesNomProvider_Class; // Properties qui  utilisant un fichier dans lequel on trouve le nom du provider et le nom de classe correspondant.
+    static Properties propertiesClassCle ; // Properties utilisant un fichier dans lequel on trouve une classe implémentant Cle en fonction du nom du provider.
+    
     static{
-        propConfig = new Properties();
+        propertiesNomProvider_Class = new Properties();
+        propertiesClassCle = new Properties();
         try
         {
-            propConfig.load(new FileInputStream(getNomFichierConfig()));
+            propertiesNomProvider_Class.load(new FileInputStream(getNomFichierConfig()));
+            propertiesClassCle.load(new FileInputStream(getNomFichierConfig()));
         }
         catch (FileNotFoundException e) { System.out.println("Fichier de propriétés non trouvé !");}
         catch (IOException e) { System.out.println("Aie : " + e.getMessage()); }
@@ -38,7 +42,7 @@ public class Services
      * @return
      */
     public static String getProperty(String key){
-        return propConfig.getProperty(key);
+        return propertiesNomProvider_Class.getProperty(key);
     }
 
     /**
