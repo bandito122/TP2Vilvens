@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TP2_CryptoLibrary;
+package Crypto;
 
 /**
  *
  * @author bobmastrolilli
  */
-public abstract class Provider
+public interface Provider
 {
-    abstract Service newService();
+    Service newService();
 }

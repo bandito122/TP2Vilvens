@@ -5,13 +5,17 @@
  */
 package Crypto;
 
-
 /**
  *
  * @author bobmastrolilli
  */
-public interface Service 
+public class Vigenere implements CryptoProvider
 {
-    Cle generateKey(int longueur);
-    String getName();
+
+    @Override
+    public Chiffrement newService() 
+    {
+        return new ChiffrePolyVigenere();
+    }
+    
 }

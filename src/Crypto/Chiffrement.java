@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TP2_CryptoLibrary;
+package Crypto;
 
 
 /**
@@ -12,7 +12,7 @@ package TP2_CryptoLibrary;
  */
 public interface Chiffrement extends Service 
 {
-    //Cle generateKey(int longueur);
+    
     void init(Cle k);
     String crypte(String plainText);
     String decrypt(String cipherText);

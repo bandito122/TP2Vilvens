@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TP2_CryptoLibrary;
+package Crypto;
 
 
 import Crypto.Services;
@@ -16,37 +16,24 @@ import java.util.Properties;
 public class CryptoManager extends Services
 {
 
-    //static ConcurrentMap concurrentMap = new ConcurrentHashMap();
-//    ConcurrentMap ProvidersMap = new ConcurrentHashMap();
-//            for(int i=0;i<s.size();i++)
-//            {
-//                Class cl = Class.forName(s.get(i+1).toString());
-//                CryptoProvider cp = (CryptoProvider)cl.newInstance();
-//                ProvidersMap.put(s.get(i), cp);
-//                i++;
-//            }
-    
-       public  void getChiffrement(String name)
+       public static  Service NewInstance(String nom) throws ClassNotFoundException, InstantiationException, IllegalAccessException
        {
-           //Chiffrement c = new Chiffrement() {};
-//           try 
-//           {
-//              // BeanAbstract beanSql;
-//               beanSql = new BeanBDMySql();
-//               beanSql.creerConnexionBD();
-//               String s = beanSql.findClassByProdiver(name);
-//               System.out.println(s);
-//               Class cl = Class.forName(s);
-//               CryptoProvider cp = (CryptoProvider)cl.newInstance();
-//               return cp.getChiffrement();
-//           } catch (Exception ex) {
-//               Logger.getLogger(CryptoManager.class.getName()).log(Level.SEVERE, null, ex);
-//           }
+
+               Class cl = Class.forName(nom); // j'ai un cryptoprovider
+               CryptoProvider cp = (CryptoProvider)cl.newInstance();
+               return cp.newService();
+               
+              
           
-       
+       }
+       public Cle genereCle(String nomAlgo)
+       {
+           Cle cle = null;
+           return cle;
+       }
             
            
-       }
+       
 
 
    

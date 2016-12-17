@@ -7,7 +7,6 @@ package Crypto;
 
 
 
-import TP2_CryptoLibrary.Provider;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -41,7 +40,7 @@ public class Services
      * @param key
      * @return
      */
-    public static String getProperty(String key){
+    public static String getPropertyNomProvider(String key){
         return propertiesNomProvider_Class.getProperty(key);
     }
 
