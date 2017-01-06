@@ -5,9 +5,6 @@ public interface CryptoProvider extends Provider
 {
 
     @Override
-    public Chiffrement newService();
-   
-
-    
+    public Chiffrement newService(String c);
  
 }

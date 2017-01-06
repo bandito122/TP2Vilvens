@@ -7,6 +7,10 @@ package Crypto;
 
 
 import Crypto.Services;
+import Utils.FichierConfig;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -15,21 +19,17 @@ import java.util.Properties;
  */
 public class CryptoManager extends Services
 {
-
-       public static  Service NewInstance(String nom) throws ClassNotFoundException, InstantiationException, IllegalAccessException
+    Properties propertiesClassCle ; // Properties utilisant un fichier dans lequel on trouve une classe implémentant Cle en fonction du nom du provider.
+    
+ 
+       public Cle genereCle(String nomAlgo) throws ClassNotFoundException, InstantiationException, IllegalAccessException
        {
-
-               Class cl = Class.forName(nom); // j'ai un cryptoprovider
-               CryptoProvider cp = (CryptoProvider)cl.newInstance();
-               return cp.newService();
-               
-              
-          
-       }
-       public Cle genereCle(String nomAlgo)
-       {
-           Cle cle = null;
-           return cle;
+           String nomClassCle = FichierConfig.getPropertyClassCle(nomAlgo);
+           Class cl = Class.forName(nomClassCle);
+           System.out.println("nom class cle = " + nomClassCle);
+           Cle cle = (Cle) cl.newInstance();
+           
+           return cle; // retourne la clé en fonction du nom de l'algo
        }
             
            

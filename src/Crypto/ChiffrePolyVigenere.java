@@ -15,7 +15,7 @@ public class ChiffrePolyVigenere implements Chiffrement
 {
 
     private ClePolyVigenere _cleAlberti = null;
-    private String _DisqueExterieur = "abcdefghijklmnopqrstuvwxyz0123456789 ";
+    private String _DisqueExterieur = "ABCDEFGHIJKLMNOPQRSTUVW0123456789 ";
     private String _DisqueInterieur = " 8796543210zyxwvutsrqponmlkjihgfedcba";
     private int TailleDisque= _DisqueExterieur.length();
 
@@ -41,9 +41,7 @@ public class ChiffrePolyVigenere implements Chiffrement
         }
         String randomCle;
         randomCle = new String(randomChars);
-        
-
-        
+    
         ClePolyVigenere cle = new ClePolyVigenere(LettreCalage, randomCle, 5);
         return cle;
     }

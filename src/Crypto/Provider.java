@@ -11,5 +11,5 @@ package Crypto;
  */
 public interface Provider
 {
-    Service newService();
+    Service newService(String nom);
 }

@@ -7,6 +7,7 @@ package Crypto;
 
 
 
+import Utils.FichierConfig;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,59 +19,36 @@ import java.util.Properties;
  */
 public class Services
 {
-  
+  /* Properties qui  utilisant un fichier (config.properties) dans lequel on trouve 
+     le nom du provider et le nom de classe qu'il propose comme implémentation de service.   */
 
-    static Properties propertiesNomProvider_Class; // Properties qui  utilisant un fichier dans lequel on trouve le nom du provider et le nom de classe correspondant.
-    static Properties propertiesClassCle ; // Properties utilisant un fichier dans lequel on trouve une classe implémentant Cle en fonction du nom du provider.
-    
-    static{
-        propertiesNomProvider_Class = new Properties();
-        propertiesClassCle = new Properties();
-        try
-        {
-            propertiesNomProvider_Class.load(new FileInputStream(getNomFichierConfig()));
-            propertiesClassCle.load(new FileInputStream(getNomFichierConfig()));
-        }
-        catch (FileNotFoundException e) { System.out.println("Fichier de propriétés non trouvé !");}
-        catch (IOException e) { System.out.println("Aie : " + e.getMessage()); }
-    }
-
-    /**
-     *
-     * @param key
-     * @return
-     */
-    public static String getPropertyNomProvider(String key){
-        return propertiesNomProvider_Class.getProperty(key);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public static String getUserdir()
-    {
-        return System.getProperty("user.dir") + System.getProperty("file.separator")
-                + "src" + System.getProperty("file.separator")
-                + "Utils" + System.getProperty("file.separator");
-    }
-    /**
-     *
-     * @return
-     */
-    public static String getNomFichierConfig()
-    {
-       String nomFichier = getUserdir()+ "config.properties";
-       return nomFichier;
-    }
-    
     static void register(Provider p)
     {
         // TO DO
     }
     
-    static void newInstance (String nom)
+  public Service newInstance (String nom) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException
     {
-        //TO DO
+        
+        //soit j'utilise le fichier properties et alors plus besoin de la classe cryptoprovider
+        //soit j'utilise le crypto provider et alors plus besoin de fichier properties étant donné
+        //que c'est ce fichier qui me donne la classe pour le chiffrement
+        //nom = nom du provider donc crypto.triumvirat
+        
+        //crypto.triumvirat Crypto.Triumvirat
+        System.out.println("NOM = "  + FichierConfig.getPropertyProviderChiffrement(nom));
+        Class cl = Class.forName(nom); // j'ai un cryptoprovider crypto.triumvirat
+        
+        CryptoProvider cp = (CryptoProvider)cl.newInstance();
+
+        System.out.println("NOM = "  + FichierConfig.getPropertyProviderChiffrement(nom));
+        return cp.newService(FichierConfig.getPropertyProviderChiffrement(nom)); // newService cryptocaeasre
     }
+    public String getClassName(String nom)
+    {
+        String name = null ; 
+        //name = fich.getProperty(nom);
+        return name;
+    }
+    
 }

@@ -3,21 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Crypto;
+package DSG;
+
+import Utils.FichierConfig;
+import static Utils.FichierConfig.getUserdir;
+
 
 
 /**
  *
  * @author bobmastrolilli
  */
-public class TP2_VILVENS_CryptoLibrary 
-{
+public class NewMain {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        String nomFichier = getUserdir()+ "Provider.properties";
+        System.out.println("path =" + FichierConfig.getPropertyProviderClass("Triumvirat"));
     }
     
 }

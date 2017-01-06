@@ -17,6 +17,9 @@ public class ClePolyVigenere implements Cle,Serializable
     private char LettreCalage;
     private int NbCaracAvantPassageSuivant; // si 3, aprés 3 carac on tourne le disque
 
+    public ClePolyVigenere() {
+    }
+
     public ClePolyVigenere(char LC,String key, int Nb)
     {
         this.key=key;
@@ -46,7 +49,7 @@ public class ClePolyVigenere implements Cle,Serializable
     @Override
     public String toString()
     {
-        return "Cle Alberti".toString();
+        return "Cle PolyVigenere".toString();
     }
 
     @Override

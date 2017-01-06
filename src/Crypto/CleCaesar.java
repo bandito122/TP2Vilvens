@@ -12,6 +12,9 @@ package Crypto;
 public class CleCaesar implements Cle
 {
     private int offset;
+
+    public CleCaesar() {
+    }
     
     
     public CleCaesar(int offset)

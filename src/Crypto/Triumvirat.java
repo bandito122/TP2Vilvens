@@ -5,6 +5,9 @@
  */
 package Crypto;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author bobmastrolilli
@@ -13,9 +16,23 @@ public class Triumvirat implements CryptoProvider
 {
 
     @Override
-    public Chiffrement newService() 
+    public Chiffrement newService(String nom) 
     {
-        return new CryptoCaesar();
+        try 
+        {
+            //System.out.println("NOM = " + nom );
+            Class cl = Class.forName(nom);
+            Chiffrement ch = (Chiffrement)cl.newInstance() ;
+            return ch;
+        } 
+        catch (ClassNotFoundException ex) {
+            Logger.getLogger(Triumvirat.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Triumvirat.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Triumvirat.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
 }

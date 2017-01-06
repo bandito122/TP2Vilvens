@@ -5,7 +5,7 @@
  */
 package Crypto;
 
-import static Crypto.Services.getUserdir;
+
 
 /**
  *
@@ -16,9 +16,12 @@ public class test {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        String nomFichier = getUserdir()+ "config.properties";
-        System.out.println("nom fichier = "  + nomFichier);
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException 
+    {
+        Class cl = Class.forName("Crypto.CleCaesar"); // j'ai un cryptoprovider crypto.triumvirat
+        cl.newInstance();
+//        String nomFichier = getUserdir()+ "config.properties";
+//        System.out.println("nom fichier = "  + nomFichier);
     }
      public static String getUserdir()
     {

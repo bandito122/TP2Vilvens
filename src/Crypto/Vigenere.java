@@ -13,7 +13,7 @@ public class Vigenere implements CryptoProvider
 {
 
     @Override
-    public Chiffrement newService() 
+    public Chiffrement newService(String nom) 
     {
         return new ChiffrePolyVigenere();
     }
