@@ -7,7 +7,7 @@ package Crypto;
 
 
 
-import Utils.FichierConfig;
+import UtilsCrypto.FichierConfig;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -36,13 +36,14 @@ public class Services
         //nom = nom du provider donc crypto.triumvirat
         
         //crypto.triumvirat Crypto.Triumvirat
-        System.out.println("NOM = "  + FichierConfig.getPropertyProviderChiffrement(nom));
-        Class cl = Class.forName(nom); // j'ai un cryptoprovider crypto.triumvirat
+        String CheminClassCryptoProvider = FichierConfig.getPropertyProviderClass(nom);
+        
+        Class cl = Class.forName(CheminClassCryptoProvider); // j'ai un cryptoprovider crypto.triumvirat
         
         CryptoProvider cp = (CryptoProvider)cl.newInstance();
 
         System.out.println("NOM = "  + FichierConfig.getPropertyProviderChiffrement(nom));
-        return cp.newService(FichierConfig.getPropertyProviderChiffrement(nom)); // newService cryptocaeasre
+        return cp.newService(FichierConfig.getPropertyProviderChiffrement(CheminClassCryptoProvider)); // newService cryptocaeasre
     }
     public String getClassName(String nom)
     {

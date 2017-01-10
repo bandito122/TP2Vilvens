@@ -22,7 +22,7 @@ public class ChiffrePolyVigenere implements Chiffrement
     private int IndicedisqueInterieur;
     private int PassageCaracSuivant;
 
-    @Override
+
     public Cle generateKey(int lenght) 
     {
         // Recherche de la lettre de callage
@@ -33,10 +33,12 @@ public class ChiffrePolyVigenere implements Chiffrement
         randomChars=new char[lenght];
        
         // Pour la clé Alberti, on a besoin de : 1)Lettre de callage 2) Une clé 
-        char LettreCalage = _DisqueInterieur.charAt(rand.nextInt(_DisqueInterieur.length()));
+        char LettreCalage = _DisqueInterieur.charAt(rand.nextInt(_DisqueInterieur.length())); //P
         
+        //on cree une cle de 128
         for (int i=0;i<lenght;i++) 
         {
+            // retourne une 
             randomChars[i] = _DisqueExterieur.charAt(rand.nextInt(_DisqueExterieur.length()));
         }
         String randomCle;
@@ -69,19 +71,22 @@ public class ChiffrePolyVigenere implements Chiffrement
   
         for (int i=0;i<TextClair.length();i++) 
         {
-            if (i%this.PassageCaracSuivant== 0) //si ==0 alors on change la lettre dans key
+            if (i%this.PassageCaracSuivant== 0) //si ==0 alors on change la lettre dans key(on decale les disques)
             {
                 System.out.println("yo");
                 indiceKey++;
-                int IndiceLettreDisqueExterieur =this._DisqueExterieur.indexOf(_cleAlberti.getKey().charAt(indiceKey));
-
+               // je set l'indice du disque extérieur en fonction de la clé
+                int IndiceLettreDisqueExterieur =this._DisqueExterieur.indexOf(_cleAlberti.getKey().charAt(indiceKey)); //6
+                
+                
+                //obtenir le decalage entre les deux disques
                 decalage = IndicedisqueInterieur-IndiceLettreDisqueExterieur;
                 if (decalage<0) 
                 {
                     decalage=decalage+TailleDisque;  // pas de décalage négatif
                 }
             }
-            
+            // je regarde ou se trouve la lettre a crypter sur le disque exterieur et j'ajoute le decalage = indice lettre crypte
             indiceLettreCryptee=(decalage +_DisqueExterieur.indexOf(TextClair.charAt(i))) % TailleDisque;
 
             if (indiceLettreCryptee<0) 

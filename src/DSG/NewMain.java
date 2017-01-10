@@ -5,8 +5,8 @@
  */
 package DSG;
 
-import Utils.FichierConfig;
-import static Utils.FichierConfig.getUserdir;
+import UtilsCrypto.FichierConfig;
+import static UtilsCrypto.FichierConfig.getUserdir;
 
 
 

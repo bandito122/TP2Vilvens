@@ -7,7 +7,7 @@ package Crypto;
 
 
 import Crypto.Services;
-import Utils.FichierConfig;
+import UtilsCrypto.FichierConfig;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,7 +19,7 @@ import java.util.Properties;
  */
 public class CryptoManager extends Services
 {
-    Properties propertiesClassCle ; // Properties utilisant un fichier dans lequel on trouve une classe implémentant Cle en fonction du nom du provider.
+    //Properties propertiesClassCle ; // Properties utilisant un fichier dans lequel on trouve une classe implémentant Cle en fonction du nom du provider.
     
  
        public Cle genereCle(String nomAlgo) throws ClassNotFoundException, InstantiationException, IllegalAccessException

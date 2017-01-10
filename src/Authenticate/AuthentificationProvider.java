@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Crypto;
-
+package Authenticate;
 
 /**
  *
  * @author bobmastrolilli
  */
-public interface Service 
-{
-    Cle generateKey(int longueur);
+interface AuthentificationProvider {
     
-    String getName();
 }

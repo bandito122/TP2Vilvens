@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Utils;
+package UtilsCrypto;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author Bob
  */
-public class FichierConfig 
+public class FichierConfig
 {
     
     static Properties propConfigProviderChiffrement; // fichier properties Provider -> chiffrement
@@ -98,7 +98,7 @@ public class FichierConfig
      */
     public static String getNomFichierConfigProviderChiffrement()
     {
-       String nomFichier = getUserdir()+ "config.properties";
+       String nomFichier = getUserdir()+ "providerChiffrement.properties";
        System.out.println("path =" + nomFichier);
        return nomFichier;
     }
